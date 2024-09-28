@@ -9,6 +9,26 @@ import com.litongjava.model.resp.RespCode;
 public class RespBodyVo implements java.io.Serializable {
   private static final long serialVersionUID = 7492427869347211588L;
 
+  /**
+   * 结果：成功、失败或未知
+   */
+  private RespCode result;
+
+  /**
+   * 业务编码：一般是在失败情况下会用到这个，以便告知用户失败的原因是什么
+   */
+  private Integer code;
+
+  /**
+   * 业务数据，譬如分页数据，用户信息数据等
+   */
+  private Object data;
+
+  /**
+   * 消息，一般用于显示
+   */
+  private String msg;
+
   public static RespBodyVo fail() {
     RespBodyVo resp = new RespBodyVo(RespCode.FAIL);
     resp.code = 0;
@@ -17,6 +37,10 @@ public class RespBodyVo implements java.io.Serializable {
 
   public static RespBodyVo fail(String msg) {
     return fail().msg(msg);
+  }
+
+  public static RespBodyVo failData(Object data) {
+    return fail().setData(data);
   }
 
   public static RespBodyVo ok() {
@@ -28,26 +52,6 @@ public class RespBodyVo implements java.io.Serializable {
   public static RespBodyVo ok(Object data) {
     return ok().data(data);
   }
-
-  /**
-   * 结果：成功、失败或未知
-   */
-  private RespCode result;
-
-  /**
-   * 消息，一般用于显示
-   */
-  private String msg;
-
-  /**
-   * 业务数据，譬如分页数据，用户信息数据等
-   */
-  private Object data;
-
-  /**
-   * 业务编码：一般是在失败情况下会用到这个，以便告知用户失败的原因是什么
-   */
-  private Integer code;
 
   /**
    *
@@ -88,15 +92,19 @@ public class RespBodyVo implements java.io.Serializable {
     return this;
   }
 
-  public void setCode(Integer code) {
+  public RespBodyVo setCode(Integer code) {
     this.code = code;
+    return this;
   }
 
-  public void setData(Object data) {
+  public RespBodyVo setData(Object data) {
     this.data = data;
+    return this;
   }
 
-  public void setMsg(String msg) {
+  public RespBodyVo setMsg(String msg) {
     this.msg = msg;
+    return this;
   }
+
 }

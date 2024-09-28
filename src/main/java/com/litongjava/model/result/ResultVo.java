@@ -73,5 +73,4 @@ public class ResultVo {
   public static ResultVo fail(int code, String message, Object data) {
     return new ResultVo(code, message, data);
   }
-
 }
