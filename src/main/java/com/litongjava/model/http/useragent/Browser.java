@@ -43,7 +43,10 @@ public class Browser extends UserAgentInfo {
       new Browser("Yammer Desktop", "AdobeAir", "([\\d\\w\\.\\-]+)\\/Yammer"), //
       new Browser("Yammer Mobile", "Yammer[\\s]+([\\d\\w\\.\\-]+)", "Yammer[\\s]+([\\d\\w\\.\\-]+)"), //
       new Browser("Apache HTTP Client", "Apache\\\\-HttpClient", "Apache\\-HttpClient\\/([\\d\\w\\.\\-]+)"), //
-      new Browser("BlackBerry", "BlackBerry", "BlackBerry[\\d]+\\/([\\d\\w\\.\\-]+)")//
+      new Browser("BlackBerry", "BlackBerry", "BlackBerry[\\d]+\\/([\\d\\w\\.\\-]+)"),
+      new Browser("iPhone", "iPhone", "Mobile\\/([\\d\\w\\.\\-]+)"), //
+      new Browser("Html5Plus", "Html5Plus", "Html5Plus\\/([\\d\\w\\.\\-]+)"), //
+      new Browser("uni-app", "uni-app", "uni-app")
   );
 
   private Pattern versionPattern;
