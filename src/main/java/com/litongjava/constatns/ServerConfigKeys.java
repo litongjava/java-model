@@ -13,6 +13,7 @@ public interface ServerConfigKeys {
   String SERVER_404 = "server.404";
   String SERVER_500 = "server.500";
   String SERVER_STATA_ENABLE = "server.stat.enable";
+  String SERVER_HTTP_REQUEST_PRINT_PACKET = "server.http.request.printPacket";
   String SERVER_HTTP_REQUEST_PRINT_URL = "server.http.request.printUrl";
   String SERVER_HTTP_CONTROLLER_PRINTMAPPING = "server.http.controller.printMapping";
   String SERVER_HTTP_CONTROLLER_WRITEMAPPING = "server.http.controller.writeMapping";
