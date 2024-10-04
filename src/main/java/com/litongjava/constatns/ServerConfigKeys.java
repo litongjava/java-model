@@ -3,7 +3,7 @@ package com.litongjava.constatns;
 public interface ServerConfigKeys {
   // file
   String DEFAULT_CONFIG_FILE_NAME = "app.properties";
-  
+
   // server
   String SERVER_DEV_MODE = "server.dev.mode";
   String SERVER_LISTENING_ENABLE = "server.listening.enable";
@@ -18,12 +18,14 @@ public interface ServerConfigKeys {
   String SERVER_HTTP_CONTROLLER_PRINTMAPPING = "server.http.controller.printMapping";
   String SERVER_HTTP_CONTROLLER_WRITEMAPPING = "server.http.controller.writeMapping";
   String SERVER_HTTP_REQUEST_PRINTREPORT = "server.http.request.printReport";
+
+  String SERVER_HTTP_RESPONSE_CORS_ENABLE = "server.http.response.cors.enable";
+
   String SERVER_SESSION_ENABLE = "server.session.enable";
   String SERVER_RESOURCES_STATIC_LOCATIONS = "server.resources.static-locations";
   // unit millis
   String SERVER_BEARTBEAT_TIMEOUT = "server.beartbeat.timeout";
   String SERVER_READ_BUFFER_SIZE = "server.read.buffer.size";
-  String SERVER_RESPONSE_CORS_ENABLED = "server.response.cors.enabled";
 
   // http
   String HTTP_MAX_LIVE_TIME_OF_STATIC_RES = "http.max.live.time.of.static.res";
@@ -33,8 +35,6 @@ public interface ServerConfigKeys {
 
   String HTTP_ENABLE_REQUEST_LIMIT = "http.enable.request.limit";
   String HTTP_MAX_REQUESTS_PER_SECOND = "http.max.requests.per.second";
-
-
 
   // app
   String APP_ENV = "app.env";
