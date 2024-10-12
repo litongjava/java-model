@@ -9,7 +9,8 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class ResultVo {
+public class ResultVo implements java.io.Serializable {
+  private static final long serialVersionUID = 7295952087858355659L;
   public static final int FAIL_CODE = 400;
   private int code = 200;
   private String message;

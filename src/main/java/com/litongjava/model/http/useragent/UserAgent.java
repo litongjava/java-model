@@ -6,9 +6,9 @@ package com.litongjava.model.http.useragent;
  * @author looly
  * @since 4.2.1
  */
-public class UserAgent {
-
-	/** 是否为移动平台 */
+public class UserAgent implements java.io.Serializable {
+  private static final long serialVersionUID = 6701715772792758119L;
+  /** 是否为移动平台 */
 	private boolean mobile;
 	/** 浏览器类型 */
   private Browser browser;

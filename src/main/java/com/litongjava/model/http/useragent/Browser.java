@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
  * @since 4.2.1
  */
 public class Browser extends UserAgentInfo {
-
+  private static final long serialVersionUID = 6844785189881450545L;
   /** 未知 */
   public static final Browser Unknown = new Browser(NameUnknown, null, null);
   /** 其它版本 */
@@ -46,8 +46,7 @@ public class Browser extends UserAgentInfo {
       new Browser("BlackBerry", "BlackBerry", "BlackBerry[\\d]+\\/([\\d\\w\\.\\-]+)"), //
       new Browser("iPhone", "iPhone", "Mobile\\/([\\d\\w\\.\\-]+)"), //
       new Browser("Html5Plus", "Html5Plus", "Html5Plus\\/([\\d\\w\\.\\-]+)"), //
-      new Browser("uni-app", "uni-app", "uni-app")
-  );
+      new Browser("uni-app", "uni-app", "uni-app"));
 
   private Pattern versionPattern;
 
@@ -67,8 +66,6 @@ public class Browser extends UserAgentInfo {
       this.versionPattern = Pattern.compile(versionRegex, Pattern.CASE_INSENSITIVE);
     }
   }
-
-  
 
   /**
    * 获取浏览器版本

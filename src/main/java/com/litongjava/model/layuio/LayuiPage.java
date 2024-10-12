@@ -6,7 +6,9 @@ import java.util.Collection;
  * @author tanyaowu
  * 2017年8月22日 下午2:17:55
  */
-public class LayuiPage {
+public class LayuiPage implements java.io.Serializable {
+  private static final long serialVersionUID = 7867738161537697751L;
+
   public static LayuiPage fail() {
     return new LayuiPage(2);
   }

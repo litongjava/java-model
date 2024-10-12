@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class DbPage<T> {
+public class DbPage<T> implements java.io.Serializable {
+  private static final long serialVersionUID = -17665940529965945L;
   private Integer total;
   private List<T> list;
 }

@@ -1,4 +1,4 @@
-package com.litongjava.aop;
+package com.litongjava.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

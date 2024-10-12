@@ -8,7 +8,9 @@ import okhttp3.Headers;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class ResponseVo {
+public class ResponseVo implements java.io.Serializable {
+  private static final long serialVersionUID = 7720540152641412797L;
+
   private boolean ok;
   private int code;
   private Headers headers;

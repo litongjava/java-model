@@ -10,6 +10,7 @@ import java.util.List;
  * @since 4.2.1
  */
 public class Engine extends UserAgentInfo {
+  private static final long serialVersionUID = 8140242887565684095L;
 
   /** 未知 */
   public static final Engine Unknown = new Engine(NameUnknown, null);

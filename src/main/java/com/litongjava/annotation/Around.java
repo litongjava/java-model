@@ -1,4 +1,4 @@
-package com.litongjava.aop;
+package com.litongjava.annotation;
 
 import java.lang.annotation.Target;
 import java.lang.annotation.ElementType;

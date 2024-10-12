@@ -8,7 +8,9 @@ import java.util.regex.Pattern;
  * @author looly
  * @since 4.2.1
  */
-public class UserAgentInfo {
+public class UserAgentInfo implements java.io.Serializable {
+  
+  private static final long serialVersionUID = 2100808048674884590L;
 
   public static final String NameUnknown = "Unknown";
 

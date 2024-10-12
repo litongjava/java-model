@@ -7,10 +7,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class JdbcInfo {
+public class JdbcInfo implements java.io.Serializable {
+
+  private static final long serialVersionUID = 458198790934789146L;
+
   //jdbc:postgresql://192.168.3.9/uh_courses
   private String url, user, pswd;
-  
+
   /**
    * mysql,oracle,postgresql,sqlite
    * @return

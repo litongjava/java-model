@@ -12,7 +12,8 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class ValidateResult {
+public class ValidateResult implements java.io.Serializable {
+  private static final long serialVersionUID = 1154638717477163472L;
   private String field;
   private List<String> messages;
 

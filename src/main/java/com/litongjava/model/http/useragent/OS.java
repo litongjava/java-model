@@ -10,6 +10,7 @@ import java.util.List;
  * @since 4.2.1
  */
 public class OS extends UserAgentInfo {
+  private static final long serialVersionUID = 7241096549074714316L;
 
   /** 未知 */
   public static final OS Unknown = new OS(NameUnknown, null);

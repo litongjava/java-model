@@ -11,6 +11,7 @@ import java.util.List;
  * @since 4.2.1
  */
 public class Platform extends UserAgentInfo {
+  private static final long serialVersionUID = 251639309910040438L;
 
   /** 未知 */
   public static final Platform Unknown = new Platform(NameUnknown, null);

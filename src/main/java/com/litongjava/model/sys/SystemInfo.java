@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SystemInfo {
+public class SystemInfo implements java.io.Serializable {
+  private static final long serialVersionUID = -4158984832920624527L;
+  
   private int availableProcessors;
   private double systemLoadAverage;
   private long cpuUsage;
