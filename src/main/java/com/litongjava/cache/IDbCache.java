@@ -3,7 +3,7 @@ package com.litongjava.cache;
 /**
  * ICache.
  */
-public interface ICache {
+public interface IDbCache {
   <T> T get(String cacheName, Object key);
 
   void put(String cacheName, Object key, Object value);
