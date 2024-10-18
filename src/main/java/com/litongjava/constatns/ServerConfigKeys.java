@@ -12,6 +12,12 @@ public interface ServerConfigKeys {
   String SERVER_CONTEXT_PATH = "server.context-path";
   String SERVER_404 = "server.404";
   String SERVER_500 = "server.500";
+  String SERVER_SSL_ENEABLE = "server.ssl.enable";
+  String SERVER_SSL_PORT = "server.ssl.port";
+  String SERVER_SSL_KEY_FILE = "server.ssl.key.file";
+  String SERVER_SSL_KEY_CERT_CHAIN_FILE = "server.ssl.key.cert.chain.file";
+  String SERVER_SSL_KEY_PASSWORD = "server.ssl.key.password";
+
   String SERVER_STATA_ENABLE = "server.stat.enable";
   String SERVER_HTTP_REQUEST_PRINT_PACKET = "server.http.request.printPacket";
   String SERVER_HTTP_REQUEST_PRINT_URL = "server.http.request.printUrl";
