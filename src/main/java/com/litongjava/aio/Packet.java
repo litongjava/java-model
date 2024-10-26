@@ -18,7 +18,7 @@ public class Packet implements java.io.Serializable, Cloneable {
   private int byteCount = 0;
   private Long respId = null;
   //private PacketListener packetListener;
-  private boolean isBlockSend = false;
+  private boolean blockSend = false;
   private Meta meta = null;
 
   /**
@@ -100,7 +100,7 @@ public class Packet implements java.io.Serializable, Cloneable {
    * @return the isBlockSend
    */
   public boolean isBlockSend() {
-    return isBlockSend;
+    return blockSend;
   }
 
   public String logstr() {
@@ -111,7 +111,7 @@ public class Packet implements java.io.Serializable, Cloneable {
    * @param isBlockSend the isBlockSend to set
    */
   public void setBlockSend(boolean isBlockSend) {
-    this.isBlockSend = isBlockSend;
+    this.blockSend = isBlockSend;
   }
 
   /**

@@ -29,6 +29,8 @@ public interface ServerConfigKeys {
 
   String SERVER_SESSION_ENABLE = "server.session.enable";
   String SERVER_RESOURCES_STATIC_LOCATIONS = "server.resources.static-locations";
+  String SERVER_RESOURCES_STATIC_FILE_CACHE_ENABLE = "server.resources.static.file.cache.enable";
+
   // unit millis
   String SERVER_BEARTBEAT_TIMEOUT = "server.beartbeat.timeout";
   String SERVER_READ_BUFFER_SIZE = "server.read.buffer.size";
@@ -58,7 +60,12 @@ public interface ServerConfigKeys {
 
   // redis
   String REDIS_URL = "REDIS_URL";
+  String REDIS_HOST = "redis.host";
+  String REDIS_PORT = "redis.port";
+  String REDIS_PASSWORD = "redis.password";
+  String REDIS_TIMEOUT = "redis.timeout";
   String REDIS_DATABASE = "redis.database";
+
   // elastic
   String ELASTICSEARCH_DSN = "ELASTICSEARCH_DSN";
 
