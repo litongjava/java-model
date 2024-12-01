@@ -1,6 +1,6 @@
-package com.litongjava.constatns;
+package com.litongjava.constants;
 
 public interface AopClasses {
-  String Aop = "com.litongjava.jfinal.aop.Aop";
+  String AOP = "com.litongjava.jfinal.aop.Aop";
   String LoadingCache = "com.github.benmanes.caffeine.cache.LoadingCache";
 }

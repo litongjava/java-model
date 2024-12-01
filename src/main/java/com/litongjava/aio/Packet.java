@@ -38,14 +38,14 @@ public class Packet implements java.io.Serializable, Cloneable {
    */
   private boolean isSslEncrypted = false;
 
-  protected boolean keepedConnection = true;
+  protected boolean keepConnection = true;
 
-  public void setKeepedConnectin(boolean keepedConnection) {
-    this.keepedConnection = keepedConnection;
+  public void setKeepConnection(boolean keepedConnection) {
+    this.keepConnection = keepedConnection;
   }
 
-  public boolean isKeepedConnection() {
-    return keepedConnection;
+  public boolean isKeepConnection() {
+    return keepConnection;
   }
 
   @Override
