@@ -76,4 +76,6 @@ public interface ServerConfigKeys {
   // aop
   String AOP_PRINT_SCANNED_CLASSES = "aop.print.scanned.classes";
 
+  String BOOT_EXCEPTION_EXIT = "boot.exception.exit";
+
 }
