@@ -53,6 +53,14 @@ public class RespBodyVo implements java.io.Serializable {
     return ok().data(data);
   }
 
+  public static RespBodyVo ok(String msg, Object data) {
+    RespBodyVo resp = new RespBodyVo(RespCode.OK);
+    resp.code = 1;
+    resp.msg = msg;
+    resp.data = data;
+    return resp;
+  }
+
   /**
    *
    * @author tanyaowu
