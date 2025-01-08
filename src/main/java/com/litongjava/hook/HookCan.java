@@ -8,15 +8,15 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class HookContainer {
+public class HookCan {
 
-  private static HookContainer me = new HookContainer();
+  private static HookCan me = new HookCan();
 
-  public static HookContainer me() {
+  public static HookCan me() {
     return me;
   }
 
-  private HookContainer() {
+  private HookCan() {
   }
 
   /**
