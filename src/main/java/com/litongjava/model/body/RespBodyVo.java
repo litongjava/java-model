@@ -1,5 +1,6 @@
 package com.litongjava.model.body;
 
+import com.litongjava.model.error.ErrorVo;
 import com.litongjava.model.resp.RespCode;
 
 /**
@@ -8,11 +9,6 @@ import com.litongjava.model.resp.RespCode;
  */
 public class RespBodyVo implements java.io.Serializable {
   private static final long serialVersionUID = 7492427869347211588L;
-
-  /**
-   * 结果：成功、失败或未知
-   */
-  private RespCode result;
 
   /**
    * 业务编码：一般是在失败情况下会用到这个，以便告知用户失败的原因是什么
@@ -29,9 +25,16 @@ public class RespBodyVo implements java.io.Serializable {
    */
   private String msg;
 
+  private ErrorVo error;
+
   public static RespBodyVo fail() {
     RespBodyVo resp = new RespBodyVo(RespCode.FAIL);
     resp.code = 0;
+    return resp;
+  }
+
+  public static RespBodyVo error(ErrorVo error) {
+    RespBodyVo resp = new RespBodyVo(error);
     return resp;
   }
 
@@ -66,7 +69,7 @@ public class RespBodyVo implements java.io.Serializable {
    * @author tanyaowu
    */
   private RespBodyVo(RespCode respCode) {
-    this.result = respCode;
+    this.code = respCode.value;
   }
 
   public RespBodyVo code(Integer code) {
@@ -77,6 +80,11 @@ public class RespBodyVo implements java.io.Serializable {
   public RespBodyVo data(Object data) {
     this.setData(data);
     return this;
+  }
+
+  private RespBodyVo(ErrorVo error) {
+    this.code = 0;
+    this.error = error;
   }
 
   public Integer getCode() {
@@ -92,7 +100,7 @@ public class RespBodyVo implements java.io.Serializable {
   }
 
   public boolean isOk() {
-    return this.result == RespCode.OK;
+    return this.code == RespCode.OK.value;
   }
 
   public RespBodyVo msg(String msg) {
@@ -115,4 +123,11 @@ public class RespBodyVo implements java.io.Serializable {
     return this;
   }
 
+  public ErrorVo getError() {
+    return error;
+  }
+
+  public void setError(ErrorVo error) {
+    this.error = error;
+  }
 }

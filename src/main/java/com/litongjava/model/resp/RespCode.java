@@ -8,13 +8,15 @@ import java.util.Objects;
  */
 public enum RespCode {
   /**
+   * 失败的响应
+   */
+  FAIL(0),
+
+  /**
    * 成功的响应
    */
   OK(1),
-  /**
-   * 失败的响应
-   */
-  FAIL(2),
+
   /**
    * 未知的响应
    */
@@ -30,7 +32,7 @@ public enum RespCode {
     return null;
   }
 
-  int value;
+  public int value;
 
   private RespCode(int value) {
     this.value = value;
