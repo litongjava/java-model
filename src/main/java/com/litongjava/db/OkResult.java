@@ -9,22 +9,22 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class OperateResult<T> implements java.io.Serializable {
+public class OkResult<T> implements java.io.Serializable {
   private static final long serialVersionUID = -4806033278155820866L;
   private T v;
   private boolean ok;
   private Exception e;
 
-  public OperateResult(boolean b) {
+  public OkResult(boolean b) {
     this.ok = b;
   }
 
-  public OperateResult(boolean b, T value) {
+  public OkResult(boolean b, T value) {
     this.ok = b;
     this.v = value;
   }
 
-  public OperateResult(boolean b, Exception e) {
+  public OkResult(boolean b, Exception e) {
     this.ok = b;
     this.e = e;
   }
@@ -42,20 +42,20 @@ public class OperateResult<T> implements java.io.Serializable {
   }
 
   @SuppressWarnings("rawtypes")
-  public static OperateResult fail() {
-    return new OperateResult(false);
+  public static OkResult fail() {
+    return new OkResult(false);
   }
 
   @SuppressWarnings("rawtypes")
-  public static OperateResult exception(Exception e) {
-    return new OperateResult(false, e);
+  public static OkResult exception(Exception e) {
+    return new OkResult(false, e);
   }
   
-  public static <T> OperateResult<T> fail(T value) {
-    return new OperateResult<T>(false, value);
+  public static <T> OkResult<T> fail(T value) {
+    return new OkResult<T>(false, value);
   }
 
-  public static <T> OperateResult<T> ok(T value) {
-    return new OperateResult<T>(true, value);
+  public static <T> OkResult<T> ok(T value) {
+    return new OkResult<T>(true, value);
   }
 }
