@@ -1,5 +1,7 @@
 package com.litongjava.model.http.response;
 
+import java.util.Map;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +16,7 @@ public class ResponseVo implements java.io.Serializable {
   private boolean ok;
   private int code;
   private Headers headers;
+  private Map<String, String> headersMap;
   private byte[] bodyBytes;
   private String bodyString;
   private Object body;
