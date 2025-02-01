@@ -9,18 +9,18 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class WebPageConteont {
+public class WebPageContent {
   private String title;
   private String url;
   private String description;
   private String content;
 
-  public WebPageConteont(String title, String url) {
+  public WebPageContent(String title, String url) {
     this.title = title;
     this.url = url;
   }
 
-  public WebPageConteont(String title, String url, String description) {
+  public WebPageContent(String title, String url, String description) {
     this.title = title;
     this.url = url;
     this.description = description;
