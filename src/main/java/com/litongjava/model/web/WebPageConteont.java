@@ -20,9 +20,9 @@ public class WebPageConteont {
     this.url = url;
   }
 
-  public WebPageConteont(String title, String url, String content) {
+  public WebPageConteont(String title, String url, String description) {
     this.title = title;
     this.url = url;
-    this.content = content;
+    this.description = description;
   }
 }
