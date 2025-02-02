@@ -38,15 +38,16 @@ public class TableInput extends HashMap {
   private static final String dateTimePattern = "yyyy-MM-dd HH:mm:ss";
 
   private static final long serialVersionUID = -808251639784763326L;
-  public static final String pageNo = "page_no";
-  public static final String pageSize = "page_size";
-  public static final String columns = "columns";
-  public static final String jsonFields = "json_fields";
-  public static final String orderBy = "order_by";
-  public static final String isAsc = "is_asc";
-  public static final String groupBy = "group_by";
-  public static final String table_name = "table_name";
-  public static final String search_key = "search_key";
+  
+  public static final String PAGE_NO = "page_no";
+  public static final String PAGE_SIZE = "page_size";
+  public static final String COLUMNS = "columns";
+  public static final String JSON_FIELDS = "json_fields";
+  public static final String ORDER_BY = "order_by";
+  public static final String IS_ASC = "is_asc";
+  public static final String GROUP_BY = "group_by";
+  public static final String TABLE_NAME = "table_name";
+  public static final String SEARCH_KEY = "search_key";
 
   public TableInput() {
   }
@@ -217,147 +218,147 @@ public class TableInput extends HashMap {
   }
 
   public TableInput setFrom(String from) {
-    set(table_name, from);
+    set(TABLE_NAME, from);
     return this;
   }
 
   public String getFrom() {
-    return getStr(table_name);
+    return getStr(TABLE_NAME);
   }
 
   public TableInput from(String from) {
-    set(table_name, from);
+    set(TABLE_NAME, from);
     return this;
   }
 
   public String from() {
-    return getStr(table_name);
+    return getStr(TABLE_NAME);
   }
 
   public TableInput setColumns(String inputColumns) {
-    set(columns, inputColumns);
+    set(COLUMNS, inputColumns);
     return this;
   }
 
   public TableInput columns(String inputColumns) {
-    set(columns, inputColumns);
+    set(COLUMNS, inputColumns);
     return this;
   }
 
   public String getColumns() {
-    return getStr(columns);
+    return getStr(COLUMNS);
   }
 
   public TableInput setJsonFields(String[] inputJsonFields) {
-    set(jsonFields, inputJsonFields);
+    set(JSON_FIELDS, inputJsonFields);
     return this;
   }
 
   public String[] getJsonFields() {
-    return getAs(jsonFields);
+    return getAs(JSON_FIELDS);
   }
 
   public TableInput setOrderBy(String inputOrderBy) {
-    set(orderBy, inputOrderBy);
+    set(ORDER_BY, inputOrderBy);
     return this;
   }
 
   public TableInput orderBy(String inputOrderBy) {
-    set(orderBy, inputOrderBy);
+    set(ORDER_BY, inputOrderBy);
     return this;
   }
 
   public String getOrderBy() {
-    return getStr(orderBy);
+    return getStr(ORDER_BY);
   }
 
   public TableInput setGroupBy(String inputGroupBy) {
-    set(orderBy, inputGroupBy);
+    set(ORDER_BY, inputGroupBy);
     return this;
   }
 
   public String getGroupBy() {
-    return getStr(groupBy);
+    return getStr(GROUP_BY);
   }
 
   public TableInput setPageNo(Integer inputPageNo) {
-    return set(pageNo, inputPageNo);
+    return set(PAGE_NO, inputPageNo);
   }
 
   public TableInput pageNo(int inputPageNo) {
-    return set(pageNo, inputPageNo);
+    return set(PAGE_NO, inputPageNo);
   }
 
   public Integer getPageNo() {
-    return getInt(pageNo);
+    return getInt(PAGE_NO);
   }
 
   public TableInput setPageSize(Integer inputPageSize) {
-    return set(pageSize, inputPageSize);
+    return set(PAGE_SIZE, inputPageSize);
   }
 
   public TableInput pageSize(Integer inputPageSize) {
-    return set(pageSize, inputPageSize);
+    return set(PAGE_SIZE, inputPageSize);
   }
 
   public TableInput limit(Integer inputPageSize) {
-    return set(pageSize, inputPageSize);
+    return set(PAGE_SIZE, inputPageSize);
   }
 
   public TableInput limit(Integer inputPageNo, Integer inputPageSize) {
-    set(pageNo, inputPageNo);
-    return set(pageSize, inputPageSize);
+    set(PAGE_NO, inputPageNo);
+    return set(PAGE_SIZE, inputPageSize);
   }
 
   public Integer getPageSize() {
-    return getInt(pageSize);
+    return getInt(PAGE_SIZE);
   }
 
   public TableInput setAsc(Boolean inputIsAsc) {
-    return set(isAsc, inputIsAsc);
+    return set(IS_ASC, inputIsAsc);
   }
 
   public TableInput asc(boolean inputIsAsc) {
-    return set(isAsc, inputIsAsc);
+    return set(IS_ASC, inputIsAsc);
   }
 
   public Boolean isAsc() {
-    return getBoolean(isAsc);
+    return getBoolean(IS_ASC);
   }
 
   public TableInput setSearchKey(String input) {
-    return setIfNotNull(search_key, input);
+    return setIfNotNull(SEARCH_KEY, input);
   }
 
   public String getSearchKey() {
-    return getStr(search_key);
+    return getStr(SEARCH_KEY);
   }
 
   public TableInput searchKey(String input) {
-    return setIfNotNull(search_key, input);
+    return setIfNotNull(SEARCH_KEY, input);
   }
 
   public String searchKey() {
-    return getStr(search_key);
+    return getStr(SEARCH_KEY);
   }
 
   @SuppressWarnings("unchecked")
   public TableInput addJsonField(String jsonField) {
-    Object object = get(jsonFields);
+    Object object = get(JSON_FIELDS);
     if (object != null && object instanceof List) {
       List<String> lists = (List) object;
       lists.add(jsonField);
     } else {
       List<String> list = new ArrayList<>();
       list.add(jsonField);
-      put(jsonFields, list);
+      put(JSON_FIELDS, list);
     }
     return this;
   }
 
   @SuppressWarnings("unchecked")
-  public TableInput setJsonFieldString(String jsonFieldString) {
-    put(jsonFields, jsonFieldString);
+  public TableInput setJsonFields(String jsonFieldsStr) {
+    put(JSON_FIELDS, jsonFieldsStr);
     return this;
   }
 
