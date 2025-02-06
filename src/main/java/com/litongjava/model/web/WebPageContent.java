@@ -14,6 +14,7 @@ public class WebPageContent {
   private String url;
   private String description;
   private String content;
+  private Double similarity;
 
   public WebPageContent(String title, String url) {
     this.title = title;
@@ -24,5 +25,12 @@ public class WebPageContent {
     this.title = title;
     this.url = url;
     this.description = description;
+  }
+
+  public WebPageContent(String title, String url, String description, String content) {
+    this.title = title;
+    this.url = url;
+    this.description = description;
+    this.content = content;
   }
 }
