@@ -64,6 +64,14 @@ public class RespBodyVo implements java.io.Serializable {
     return resp;
   }
 
+  public static RespBodyVo fail(int code, String msg) {
+    RespBodyVo resp = new RespBodyVo(RespCode.FAIL);
+    resp.code = code;
+    resp.msg = msg;
+    return resp;
+
+  }
+
   /**
    *
    * @author tanyaowu
@@ -130,4 +138,5 @@ public class RespBodyVo implements java.io.Serializable {
   public void setError(ErrorVo error) {
     this.error = error;
   }
+
 }
