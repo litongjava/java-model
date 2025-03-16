@@ -1,12 +1,12 @@
 package com.litongjava.aio;
 
 import java.nio.ByteBuffer;
-import java.util.concurrent.CountDownLatch;
+import java.nio.channels.FileChannel;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- *
- * @author tanyaowu 2017年4月1日 上午9:34:59
+ * @author tanyaowu 
+ * 2017年4月1日 上午9:34:59
  */
 public class Packet implements java.io.Serializable, Cloneable {
   private static final long serialVersionUID = 5275372187150637318L;
@@ -17,12 +17,11 @@ public class Packet implements java.io.Serializable, Cloneable {
    */
   private int byteCount = 0;
   private Long respId = null;
-  //private PacketListener packetListener;
   private boolean blockSend = false;
-  private Meta meta = null;
-
+  private PacketMeta meta = null;
   /**
-   * 消息是否是另外一台机器通过topic转过来的，如果是就不要死循环地再一次转发啦 这个属性是tio内部使用，业务层的用户请勿使用
+   * 消息是否是另外一台机器通过topic转过来的，如果是就不要死循环地再一次转发啦 
+   * 这个属性是tio内部使用，业务层的用户请勿使用
    */
   private boolean isFromCluster = false;
   /**
@@ -40,6 +39,19 @@ public class Packet implements java.io.Serializable, Cloneable {
 
   protected boolean keepConnection = true;
 
+  /**
+   * 标记是否使用零拷贝传输
+   */
+  private transient boolean zeroCopy = false;
+  /**
+   * 零拷贝传输使用的文件通道
+   */
+  private transient FileChannel zeroCopyFileChannel;
+  /**
+   * 零拷贝传输的数据长度
+   */
+  private transient long zeroCopyFileLength = 0;
+
   public void setKeepConnection(boolean keepedConnection) {
     this.keepConnection = keepedConnection;
   }
@@ -54,6 +66,8 @@ public class Packet implements java.io.Serializable, Cloneable {
       Packet ret = (Packet) super.clone();
       ret.setPreEncodedByteBuffer(null);
       ret.setSslEncrypted(false);
+      // 注意：clone时不复制零拷贝相关的状态
+      ret.clearZeroCopy();
       return ret;
     } catch (CloneNotSupportedException e) {
       e.printStackTrace();
@@ -61,44 +75,26 @@ public class Packet implements java.io.Serializable, Cloneable {
     }
   }
 
-  /**
-   * @return the byteCount
-   */
   public int getByteCount() {
     return byteCount;
   }
 
-  /**
-   * @return the id
-   */
   public Long getId() {
     return id;
   }
 
-  /**
-   * @return the preEncodedByteBuffer
-   */
   public ByteBuffer getPreEncodedByteBuffer() {
     return preEncodedByteBuffer;
   }
 
-  /**
-   * @return the respId
-   */
   public Long getRespId() {
     return respId;
   }
 
-  /**
-   * @return the synSeq
-   */
   public Integer getSynSeq() {
     return synSeq;
   }
 
-  /**
-   * @return the isBlockSend
-   */
   public boolean isBlockSend() {
     return blockSend;
   }
@@ -107,44 +103,26 @@ public class Packet implements java.io.Serializable, Cloneable {
     return "";
   }
 
-  /**
-   * @param isBlockSend the isBlockSend to set
-   */
   public void setBlockSend(boolean isBlockSend) {
     this.blockSend = isBlockSend;
   }
 
-  /**
-   * @param byteCount the byteCount to set
-   */
   public void setByteCount(int byteCount) {
     this.byteCount = byteCount;
   }
 
-  /**
-   * @param id the id to set
-   */
   public void setId(Long id) {
     this.id = id;
   }
 
-  /**
-   * @param preEncodedByteBuffer the preEncodedByteBuffer to set
-   */
   public void setPreEncodedByteBuffer(ByteBuffer preEncodedByteBuffer) {
     this.preEncodedByteBuffer = preEncodedByteBuffer;
   }
 
-  /**
-   * @param respId the respId to set
-   */
   public void setRespId(Long respId) {
     this.respId = respId;
   }
 
-  /**
-   * @param synSeq the synSeq to set
-   */
   public void setSynSeq(Integer synSeq) {
     this.synSeq = synSeq;
   }
@@ -165,35 +143,63 @@ public class Packet implements java.io.Serializable, Cloneable {
     this.isSslEncrypted = isSslEncrypted;
   }
 
-  public Meta getMeta() {
+  public PacketMeta getMeta() {
     return meta;
   }
 
-  public void setMeta(Meta meta) {
+  public void setMeta(PacketMeta meta) {
     this.meta = meta;
   }
 
-  public static class Meta implements java.io.Serializable {
-    private static final long serialVersionUID = 6209036094326369490L;
-    private Boolean isSentSuccess = false;
-    private CountDownLatch countDownLatch = null;
+  /**
+   * 设置零拷贝传输数据。调用后，Packet 将使用指定的 FileChannel 以及文件长度进行零拷贝传输，
+   * 发送时框架需要检测 isZeroCopy() 为 true 时使用底层的零拷贝方法。
+   *
+   * @param fileChannel 零拷贝传输使用的文件通道
+   * @param fileLength  传输数据的长度
+   */
+  public void setZeroCopy(FileChannel fileChannel, long fileLength) {
+    this.zeroCopy = true;
+    this.zeroCopyFileChannel = fileChannel;
+    this.zeroCopyFileLength = fileLength;
+    // 清空预编码的 ByteBuffer，确保发送时使用零拷贝
+    this.preEncodedByteBuffer = null;
+  }
 
-    public Boolean getIsSentSuccess() {
-      return isSentSuccess;
-    }
+  /**
+   * 是否启用了零拷贝传输
+   *
+   * @return true 如果使用零拷贝传输
+   */
+  public boolean isZeroCopy() {
+    return zeroCopy;
+  }
 
-    public void setIsSentSuccess(Boolean isSentSuccess) {
-      this.isSentSuccess = isSentSuccess;
-    }
+  /**
+   * 返回零拷贝传输使用的 FileChannel 对象
+   *
+   * @return FileChannel 对象
+   */
+  public FileChannel getZeroCopyFileChannel() {
+    return zeroCopyFileChannel;
+  }
 
-    public CountDownLatch getCountDownLatch() {
-      return countDownLatch;
-    }
+  /**
+   * 返回零拷贝传输的数据长度
+   *
+   * @return 数据长度
+   */
+  public long getZeroCopyFileLength() {
+    return zeroCopyFileLength;
+  }
 
-    public void setCountDownLatch(CountDownLatch countDownLatch) {
-      this.countDownLatch = countDownLatch;
-    }
-
+  /**
+   * 清除零拷贝传输设置
+   */
+  public void clearZeroCopy() {
+    this.zeroCopy = false;
+    this.zeroCopyFileChannel = null;
+    this.zeroCopyFileLength = 0;
   }
 
 }
