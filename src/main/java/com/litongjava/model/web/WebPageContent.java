@@ -15,6 +15,7 @@ public class WebPageContent {
   private String description;
   private String content;
   private Double similarity;
+  private String thumbnail;
 
   public WebPageContent(String title, String url) {
     this.title = title;
