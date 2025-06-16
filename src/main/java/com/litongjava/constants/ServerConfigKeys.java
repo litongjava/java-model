@@ -28,6 +28,8 @@ public interface ServerConfigKeys {
 
   String SERVER_HTTP_RESPONSE_CORS_ENABLE = "server.http.response.cors.enable";
 
+  String SERVER_HTTP_RESPONSE_HEANDER_SHOW_SERVER = "http.response.header.showServer";
+
   String SERVER_SESSION_ENABLE = "server.session.enable";
   String SERVER_RESOURCES_STATIC_LOCATIONS = "server.resources.static-locations";
   String SERVER_RESOURCES_STATIC_FILE_CACHE_ENABLE = "server.resources.static.file.cache.enable";
