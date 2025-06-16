@@ -1,7 +1,7 @@
 package com.litongjava.aio;
 
+import java.io.File;
 import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
@@ -40,17 +40,9 @@ public class Packet implements java.io.Serializable, Cloneable {
   protected boolean keepConnection = true;
 
   /**
-   * 标记是否使用零拷贝传输
-   */
-  private transient boolean zeroCopy = false;
-  /**
    * 零拷贝传输使用的文件通道
    */
-  private transient FileChannel zeroCopyFileChannel;
-  /**
-   * 零拷贝传输的数据长度
-   */
-  private transient long zeroCopyFileLength = 0;
+  private transient File fileBody;
 
   public void setKeepConnection(boolean keepedConnection) {
     this.keepConnection = keepedConnection;
@@ -66,8 +58,6 @@ public class Packet implements java.io.Serializable, Cloneable {
       Packet ret = (Packet) super.clone();
       ret.setPreEncodedByteBuffer(null);
       ret.setSslEncrypted(false);
-      // 注意：clone时不复制零拷贝相关的状态
-      ret.clearZeroCopy();
       return ret;
     } catch (CloneNotSupportedException e) {
       e.printStackTrace();
@@ -151,55 +141,12 @@ public class Packet implements java.io.Serializable, Cloneable {
     this.meta = meta;
   }
 
-  /**
-   * 设置零拷贝传输数据。调用后，Packet 将使用指定的 FileChannel 以及文件长度进行零拷贝传输，
-   * 发送时框架需要检测 isZeroCopy() 为 true 时使用底层的零拷贝方法。
-   *
-   * @param fileChannel 零拷贝传输使用的文件通道
-   * @param fileLength  传输数据的长度
-   */
-  public void setZeroCopy(FileChannel fileChannel, long fileLength) {
-    this.zeroCopy = true;
-    this.zeroCopyFileChannel = fileChannel;
-    this.zeroCopyFileLength = fileLength;
-    // 清空预编码的 ByteBuffer，确保发送时使用零拷贝
-    this.preEncodedByteBuffer = null;
+  public File getFileBody() {
+    return fileBody;
   }
 
-  /**
-   * 是否启用了零拷贝传输
-   *
-   * @return true 如果使用零拷贝传输
-   */
-  public boolean isZeroCopy() {
-    return zeroCopy;
-  }
-
-  /**
-   * 返回零拷贝传输使用的 FileChannel 对象
-   *
-   * @return FileChannel 对象
-   */
-  public FileChannel getZeroCopyFileChannel() {
-    return zeroCopyFileChannel;
-  }
-
-  /**
-   * 返回零拷贝传输的数据长度
-   *
-   * @return 数据长度
-   */
-  public long getZeroCopyFileLength() {
-    return zeroCopyFileLength;
-  }
-
-  /**
-   * 清除零拷贝传输设置
-   */
-  public void clearZeroCopy() {
-    this.zeroCopy = false;
-    this.zeroCopyFileChannel = null;
-    this.zeroCopyFileLength = 0;
+  public void setFileBody(File fileBody) {
+    this.fileBody = fileBody;
   }
 
 }
