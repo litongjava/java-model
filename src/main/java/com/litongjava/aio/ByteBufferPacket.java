@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ByteBufferPacket extends Packet {
-  private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 2333677428287067649L;
   private ByteBuffer byteBuffer;
 
   public void setByteBuffer(ByteBuffer byteBuffer) {
