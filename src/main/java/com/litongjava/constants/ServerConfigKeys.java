@@ -20,6 +20,7 @@ public interface ServerConfigKeys {
   String SERVER_SSL_KEY_PASSWORD = "server.ssl.key.password";
 
   String SERVER_STAT_ENABLE = "server.stat.enable";
+  String SERVER_WORKER_THREADS = "server.worker.threads";
   String SERVER_HTTP_REQUEST_PRINT_PACKET = "server.http.request.printPacket";
   String SERVER_HTTP_REQUEST_PRINT_URL = "server.http.request.printUrl";
   String SERVER_HTTP_CONTROLLER_PRINTMAPPING = "server.http.controller.printMapping";
@@ -79,5 +80,7 @@ public interface ServerConfigKeys {
   String AOP_PRINT_SCANNED_CLASSES = "aop.print.scanned.classes";
 
   String BOOT_EXCEPTION_EXIT = "boot.exception.exit";
+
+  
 
 }
