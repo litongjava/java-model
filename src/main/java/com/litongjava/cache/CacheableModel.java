@@ -1,7 +1,8 @@
 package com.litongjava.cache;
 
+import java.lang.reflect.Method;
+
 import com.jfinal.kit.StrKit;
-import com.litongjava.jfinal.aop.AopInvocation;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,8 +22,8 @@ public class CacheableModel {
    * @param target
    * @return
    */
-  public static CacheableModel buildCacheModel(AopInvocation inv, Object target) {
-    Cacheable cacheable = inv.getMethod().getAnnotation(Cacheable.class);
+  public static CacheableModel buildCacheModel(Object target, Method method, Object[] args) {
+    Cacheable cacheable = method.getAnnotation(Cacheable.class);
     String cacheName = null;
     String cacheKey = null;
     long ttl;
@@ -42,7 +43,7 @@ public class CacheableModel {
         cacheKey = value;
       } else {
         // 方法名+参数的hashCode值
-        buildCacheKey(inv);
+        buildCacheKey(method.getName(), args);
       }
 
       ttl = cacheable.ttl();
@@ -59,7 +60,7 @@ public class CacheableModel {
         ttl = cacheable.ttl();
       } else {
         cacheName = targetClass.getSimpleName();
-        cacheKey = buildCacheKey(inv);
+        cacheKey = buildCacheKey(method.getName(), args);
         ttl = 3600;
       }
 
@@ -73,9 +74,8 @@ public class CacheableModel {
    * @param inv
    * @return
    */
-  public static String buildCacheKey(AopInvocation inv) {
-    StringBuilder sb = new StringBuilder(inv.getMethodName());
-    Object[] args = inv.getArgs();
+  public static String buildCacheKey(String methodName, Object[] args) {
+    StringBuilder sb = new StringBuilder(methodName);
     for (Object object : args) {
       sb.append("").append(object.hashCode());
 

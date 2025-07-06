@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.litongjava</groupId>
   <artifactId>java-model</artifactId>
-  <version>1.2.0</version>
+  <version>1.2.1</version>
   <name>Java Model</name>
   <description>Java Model</description>
   <url>https://github.com/litongjava/java-model</url>
@@ -15,17 +15,19 @@
   </properties>
   <dependencies>
     <dependency>
-      <groupId>com.litongjava</groupId>
-      <artifactId>jfinal-aop</artifactId>
-      <version>${jfinal-aop.version}</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <version>1.18.30</version>
       <scope>provided</scope>
     </dependency>
+
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.2.13</version>
+      <scope>provided</scope>
+    </dependency>
+
 
     <dependency>
       <groupId>com.jfinal</groupId>
@@ -37,8 +39,8 @@
     <dependency>
       <groupId>com.squareup.okhttp3</groupId>
       <artifactId>okhttp</artifactId>
-      <scope>provided</scope>
       <version>4.9.0</version>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
   <licenses>
