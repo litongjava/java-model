@@ -11,13 +11,13 @@ public class UserAgent implements java.io.Serializable {
   /** 是否为移动平台 */
 	private boolean mobile;
 	/** 浏览器类型 */
-  private Browser browser;
+  private UserAgentBrowser browser;
 	/** 平台类型 */
-	private Platform platform;
+	private UserAgentPlatform platform;
 	/** 系统类型 */
-	private OS os;
+	private UserAgentOS os;
 	/** 引擎类型 */
-	private Engine engine;
+	private UserAgentEngine engine;
 	/** 浏览器版本 */
 	private String version;
 	/** 引擎版本 */
@@ -46,7 +46,7 @@ public class UserAgent implements java.io.Serializable {
 	 * 
 	 * @return 浏览器类型
 	 */
-	public Browser getBrowser() {
+	public UserAgentBrowser getBrowser() {
 		return browser;
 	}
 
@@ -55,7 +55,7 @@ public class UserAgent implements java.io.Serializable {
 	 * 
 	 * @param browser 浏览器类型
 	 */
-	public void setBrowser(Browser browser) {
+	public void setBrowser(UserAgentBrowser browser) {
 		this.browser = browser;
 	}
 
@@ -64,7 +64,7 @@ public class UserAgent implements java.io.Serializable {
 	 * 
 	 * @return 平台类型
 	 */
-	public Platform getPlatform() {
+	public UserAgentPlatform getPlatform() {
 		return platform;
 	}
 
@@ -73,7 +73,7 @@ public class UserAgent implements java.io.Serializable {
 	 * 
 	 * @param platform 平台类型
 	 */
-	public void setPlatform(Platform platform) {
+	public void setPlatform(UserAgentPlatform platform) {
 		this.platform = platform;
 	}
 
@@ -82,7 +82,7 @@ public class UserAgent implements java.io.Serializable {
 	 * 
 	 * @return 系统类型
 	 */
-	public OS getOs() {
+	public UserAgentOS getOs() {
 		return os;
 	}
 
@@ -91,7 +91,7 @@ public class UserAgent implements java.io.Serializable {
 	 * 
 	 * @param os 系统类型
 	 */
-	public void setOs(OS os) {
+	public void setOs(UserAgentOS os) {
 		this.os = os;
 	}
 
@@ -100,7 +100,7 @@ public class UserAgent implements java.io.Serializable {
 	 * 
 	 * @return 引擎类型
 	 */
-	public Engine getEngine() {
+	public UserAgentEngine getEngine() {
 		return engine;
 	}
 
@@ -109,7 +109,7 @@ public class UserAgent implements java.io.Serializable {
 	 * 
 	 * @param engine 引擎类型
 	 */
-	public void setEngine(Engine engine) {
+	public void setEngine(UserAgentEngine engine) {
 		this.engine = engine;
 	}
 
