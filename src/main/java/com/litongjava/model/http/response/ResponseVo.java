@@ -46,6 +46,13 @@ public class ResponseVo implements java.io.Serializable {
     this.bodyString = bodyString;
   }
 
+  public ResponseVo(boolean ok, int code, Headers headers, String bodyString) {
+    this.ok = ok;
+    this.code = code;
+    this.headers = headers;
+    this.bodyString = bodyString;
+  }
+
   public ResponseVo(boolean ok, byte[] bodyBytes) {
     this.ok = ok;
     this.bodyBytes = bodyBytes;
@@ -81,8 +88,16 @@ public class ResponseVo implements java.io.Serializable {
     return new ResponseVo(true, headers, bodyString);
   }
 
+  public static ResponseVo ok(int code, Headers headers, String bodyString) {
+    return new ResponseVo(true, code, headers, bodyString);
+  }
+
   public static ResponseVo fail(Headers headers, String bodyString) {
     return new ResponseVo(false, headers, bodyString);
+  }
+
+  public static ResponseVo fail(int code, Headers headers, String bodyString) {
+    return new ResponseVo(false, code, headers, bodyString);
   }
 
   public static ResponseVo ok(byte[] responseBody) {
@@ -92,7 +107,7 @@ public class ResponseVo implements java.io.Serializable {
   public static ResponseVo ok(String responseBody) {
     return new ResponseVo(true, responseBody);
   }
-  
+
   public static ResponseVo ok(Object result) {
     return new ResponseVo(true, result);
   }
