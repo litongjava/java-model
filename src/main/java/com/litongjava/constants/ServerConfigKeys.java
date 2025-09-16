@@ -3,7 +3,9 @@ package com.litongjava.constants;
 public interface ServerConfigKeys {
   // file
   String DEFAULT_CONFIG_FILE_NAME = "app.properties";
-
+  // tio
+  
+  String SERVER_DEBUG = "server.debug";
   // server
   String SERVER_DEV_MODE = "server.dev.mode";
   String SERVER_LISTENING_ENABLE = "server.listening.enable";
@@ -80,7 +82,5 @@ public interface ServerConfigKeys {
   String AOP_PRINT_SCANNED_CLASSES = "aop.print.scanned.classes";
 
   String BOOT_EXCEPTION_EXIT = "boot.exception.exit";
-
-  
 
 }
