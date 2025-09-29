@@ -1,4 +1,4 @@
-package com.litongjava.db;
+package com.litongjava.result;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,6 +14,7 @@ public class OkResult<T> implements java.io.Serializable {
   private T v;
   private boolean ok = true;
   private Exception e;
+  private String message;
 
   public OkResult(boolean b) {
     this.ok = b;
@@ -24,9 +25,15 @@ public class OkResult<T> implements java.io.Serializable {
     this.v = value;
   }
 
+  public OkResult(boolean b, String message) {
+    this.ok = b;
+    this.message = message;
+  }
+
   public OkResult(boolean b, Exception e) {
     this.ok = b;
     this.e = e;
+    this.message = e.getMessage();
   }
 
   public Long getLong() {
@@ -51,12 +58,12 @@ public class OkResult<T> implements java.io.Serializable {
     return new OkResult(false, e);
   }
 
-  public static <T> OkResult<T> fail(T value) {
-    return new OkResult<T>(false, value);
-  }
-
   public static <T> OkResult<T> ok(T value) {
     return new OkResult<T>(true, value);
+  }
+
+  public static <T> OkResult<T> fail(String value) {
+    return new OkResult<T>(false, value);
   }
 
   public OkResult<T> notOk() {
