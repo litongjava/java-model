@@ -3,15 +3,6 @@ package com.litongjava.model.validate;
 import java.util.ArrayList;
 import java.util.List;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.Accessors;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Accessors(chain = true)
 public class ValidateResult implements java.io.Serializable {
   private static final long serialVersionUID = 1154638717477163472L;
   private String field;
@@ -36,5 +27,32 @@ public class ValidateResult implements java.io.Serializable {
   public static ValidateResult by(String field, List<String> messages) {
     ValidateResult verifyResult = new ValidateResult(field, messages);
     return verifyResult;
+  }
+
+  public ValidateResult() {
+    super();
+    // TODO Auto-generated constructor stub
+  }
+
+  public ValidateResult(String field, List<String> messages) {
+    super();
+    this.field = field;
+    this.messages = messages;
+  }
+
+  public String getField() {
+    return field;
+  }
+
+  public void setField(String field) {
+    this.field = field;
+  }
+
+  public List<String> getMessages() {
+    return messages;
+  }
+
+  public void setMessages(List<String> messages) {
+    this.messages = messages;
   }
 }

@@ -1,12 +1,5 @@
 package com.litongjava.model.error;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class ErrorVo {
   private String message;
   private String type;
@@ -20,5 +13,50 @@ public class ErrorVo {
   public ErrorVo(String type, String message) {
     this.type = type;
     this.message = message;
+  }
+
+  public ErrorVo() {
+    super();
+    // TODO Auto-generated constructor stub
+  }
+
+  public ErrorVo(String message, String type, String param, Integer code) {
+    super();
+    this.message = message;
+    this.type = type;
+    this.param = param;
+    this.code = code;
+  }
+
+  public String getMessage() {
+    return message;
+  }
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
+  public String getParam() {
+    return param;
+  }
+
+  public void setParam(String param) {
+    this.param = param;
+  }
+
+  public Integer getCode() {
+    return code;
+  }
+
+  public void setCode(Integer code) {
+    this.code = code;
   }
 }

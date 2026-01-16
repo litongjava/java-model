@@ -4,15 +4,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@Getter
-@Setter
-@Slf4j
+
 public class HookCan {
-
+  private static final Logger log = LoggerFactory.getLogger(HookCan.class);
+  
   private static HookCan me = new HookCan();
 
   public static HookCan me() {
@@ -51,5 +49,9 @@ public class HookCan {
       }
     }
     me = new HookCan();
+  }
+
+  public void setDestroyMethods(List<Runnable> destroyMethods) {
+    this.destroyMethods = destroyMethods;
   }
 }

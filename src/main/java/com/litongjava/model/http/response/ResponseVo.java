@@ -2,14 +2,8 @@ package com.litongjava.model.http.response;
 
 import java.util.Map;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import okhttp3.Headers;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
 public class ResponseVo implements java.io.Serializable {
   private static final long serialVersionUID = 7720540152641412797L;
 
@@ -130,5 +124,82 @@ public class ResponseVo implements java.io.Serializable {
 
   public static ResponseVo fail(int responseCode, String bodyString) {
     return new ResponseVo(false, responseCode, bodyString);
+  }
+
+  public ResponseVo() {
+    super();
+    // TODO Auto-generated constructor stub
+  }
+
+  public ResponseVo(boolean ok, int code, Headers headers, Map<String, String> headersMap, byte[] bodyBytes,
+      String bodyString, Object body) {
+    super();
+    this.ok = ok;
+    this.code = code;
+    this.headers = headers;
+    this.headersMap = headersMap;
+    this.bodyBytes = bodyBytes;
+    this.bodyString = bodyString;
+    this.body = body;
+  }
+
+  public boolean isOk() {
+    return ok;
+  }
+
+  public void setOk(boolean ok) {
+    this.ok = ok;
+  }
+
+  public int getCode() {
+    return code;
+  }
+
+  public void setCode(int code) {
+    this.code = code;
+  }
+
+  public Headers getHeaders() {
+    return headers;
+  }
+
+  public void setHeaders(Headers headers) {
+    this.headers = headers;
+  }
+
+  public Map<String, String> getHeadersMap() {
+    return headersMap;
+  }
+
+  public void setHeadersMap(Map<String, String> headersMap) {
+    this.headersMap = headersMap;
+  }
+
+  public byte[] getBodyBytes() {
+    return bodyBytes;
+  }
+
+  public void setBodyBytes(byte[] bodyBytes) {
+    this.bodyBytes = bodyBytes;
+  }
+
+  public String getBodyString() {
+    return bodyString;
+  }
+
+  public void setBodyString(String bodyString) {
+    this.bodyString = bodyString;
+  }
+
+  public Object getBody() {
+    return body;
+  }
+
+  public void setBody(Object body) {
+    this.body = body;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
   }
 }

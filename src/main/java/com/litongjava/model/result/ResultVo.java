@@ -1,14 +1,5 @@
 package com.litongjava.model.result;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.Accessors;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Accessors(chain = true)
 public class ResultVo implements java.io.Serializable {
   private static final long serialVersionUID = 7295952087858355659L;
   public static final int FAIL_CODE = 400;
@@ -73,5 +64,41 @@ public class ResultVo implements java.io.Serializable {
 
   public static ResultVo fail(int code, String message, Object data) {
     return new ResultVo(code, message, data);
+  }
+
+  public ResultVo() {
+    super();
+    // TODO Auto-generated constructor stub
+  }
+
+  public ResultVo(int code, String message, Object data) {
+    super();
+    this.code = code;
+    this.message = message;
+    this.data = data;
+  }
+
+  public int getCode() {
+    return code;
+  }
+
+  public void setCode(int code) {
+    this.code = code;
+  }
+
+  public String getMessage() {
+    return message;
+  }
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
+  public Object getData() {
+    return data;
+  }
+
+  public void setData(Object data) {
+    this.data = data;
   }
 }

@@ -1,14 +1,5 @@
 package com.litongjava.result;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.Accessors;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Accessors(chain = true)
 public class OkResult<T> implements java.io.Serializable {
   private static final long serialVersionUID = -4806033278155820866L;
   private T v;
@@ -83,5 +74,54 @@ public class OkResult<T> implements java.io.Serializable {
 
   public T getResult() {
     return v;
+  }
+
+  public OkResult() {
+    super();
+    // TODO Auto-generated constructor stub
+  }
+
+  public OkResult(T v, boolean ok, Exception e, String message) {
+    super();
+    this.v = v;
+    this.ok = ok;
+    this.e = e;
+    this.message = message;
+  }
+
+  public T getV() {
+    return v;
+  }
+
+  public void setV(T v) {
+    this.v = v;
+  }
+
+  public boolean isOk() {
+    return ok;
+  }
+
+  public void setOk(boolean ok) {
+    this.ok = ok;
+  }
+
+  public Exception getE() {
+    return e;
+  }
+
+  public void setE(Exception e) {
+    this.e = e;
+  }
+
+  public String getMessage() {
+    return message;
+  }
+
+  public void setMessage(String message) {
+    this.message = message;
+  }
+
+  public static long getSerialversionuid() {
+    return serialVersionUID;
   }
 }

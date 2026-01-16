@@ -1,12 +1,5 @@
 package com.litongjava.db;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
 public class TableResult<T> implements java.io.Serializable {
   private static final long serialVersionUID = 3937468350139608391L;
 
@@ -68,4 +61,39 @@ public class TableResult<T> implements java.io.Serializable {
     return this.code == 1;
   }
 
+  public TableResult() {
+    super();
+    // TODO Auto-generated constructor stub
+  }
+
+  public TableResult(int code, String msg, T data) {
+    super();
+    this.code = code;
+    this.msg = msg;
+    this.data = data;
+  }
+
+  public int getCode() {
+    return code;
+  }
+
+  public void setCode(int code) {
+    this.code = code;
+  }
+
+  public String getMsg() {
+    return msg;
+  }
+
+  public void setMsg(String msg) {
+    this.msg = msg;
+  }
+
+  public T getData() {
+    return data;
+  }
+
+  public void setData(T data) {
+    this.data = data;
+  }
 }

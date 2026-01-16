@@ -2,16 +2,9 @@ package com.litongjava.model.token;
 
 import java.io.Serializable;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 /**
  * Token.
  */
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class AuthToken implements Serializable {
 
   private static final long serialVersionUID = -3667914001133777991L;
@@ -37,6 +30,42 @@ public class AuthToken implements Serializable {
 
   public AuthToken(Object userId, long expirationTime) {
     this.userId = userId;
+    this.expirationTime = expirationTime;
+  }
+
+  public AuthToken() {
+    super();
+    // TODO Auto-generated constructor stub
+  }
+
+  public AuthToken(Object userId, String token, long expirationTime) {
+    super();
+    this.userId = userId;
+    this.token = token;
+    this.expirationTime = expirationTime;
+  }
+
+  public Object getUserId() {
+    return userId;
+  }
+
+  public void setUserId(Object userId) {
+    this.userId = userId;
+  }
+
+  public String getToken() {
+    return token;
+  }
+
+  public void setToken(String token) {
+    this.token = token;
+  }
+
+  public long getExpirationTime() {
+    return expirationTime;
+  }
+
+  public void setExpirationTime(long expirationTime) {
     this.expirationTime = expirationTime;
   }
 }

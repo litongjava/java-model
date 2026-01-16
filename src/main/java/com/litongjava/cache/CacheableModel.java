@@ -4,20 +4,14 @@ import java.lang.reflect.Method;
 
 import com.jfinal.kit.StrKit;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
 public class CacheableModel {
   private String name;
   private String key;
-  long ttl;
+  private long ttl;
 
   /**
-   * buildCacheModel 
+   * buildCacheModel
+   * 
    * @param inv
    * @param target
    * @return
@@ -71,6 +65,7 @@ public class CacheableModel {
 
   /**
    * 返回方法名_参数的hashCode值
+   * 
    * @param inv
    * @return
    */
@@ -81,5 +76,41 @@ public class CacheableModel {
 
     }
     return sb.toString();
+  }
+
+  public CacheableModel() {
+    super();
+    // TODO Auto-generated constructor stub
+  }
+
+  public CacheableModel(String name, String key, long ttl) {
+    super();
+    this.name = name;
+    this.key = key;
+    this.ttl = ttl;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getKey() {
+    return key;
+  }
+
+  public void setKey(String key) {
+    this.key = key;
+  }
+
+  public long getTtl() {
+    return ttl;
+  }
+
+  public void setTtl(long ttl) {
+    this.ttl = ttl;
   }
 }
