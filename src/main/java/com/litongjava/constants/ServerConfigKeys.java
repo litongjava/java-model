@@ -4,10 +4,10 @@ public interface ServerConfigKeys {
   // file
   String DEFAULT_CONFIG_FILE_NAME = "app.properties";
   // tio
-  
   String SERVER_DEBUG = "server.debug";
   // server
   String SERVER_DEV_MODE = "server.dev.mode";
+  String SERVER_PROTOCOL = "server.protocol";
   String SERVER_LISTENING_ENABLE = "server.listening.enable";
   String SERVER_ADDRESS = "server.address";
   String SERVER_PORT = "server.port";
