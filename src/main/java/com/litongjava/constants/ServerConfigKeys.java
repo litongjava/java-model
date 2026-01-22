@@ -23,6 +23,7 @@ public interface ServerConfigKeys {
 
   String SERVER_STAT_ENABLE = "server.stat.enable";
   String SERVER_WORKER_THREADS = "server.worker.threads";
+  String SERVER_WORK_THREAD_FACTOR = "server.worker.thread.factor";
   String SERVER_HTTP_REQUEST_PRINT_PACKET = "server.http.request.printPacket";
   String SERVER_HTTP_REQUEST_PRINT_URL = "server.http.request.printUrl";
   String SERVER_HTTP_CONTROLLER_PRINTMAPPING = "server.http.controller.printMapping";
