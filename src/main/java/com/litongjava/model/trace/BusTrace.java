@@ -2,7 +2,7 @@ package com.litongjava.model.trace;
 
 public class BusTrace {
   private String userId;
-  private String requestId;
+  private Long requestId;
   private String traceId;
   private Long sessionId;
   private String sessionName;
@@ -14,7 +14,7 @@ public class BusTrace {
   public BusTrace() {
   }
 
-  public BusTrace(String userId, String requestId, String traceId, Long sessionId, String sessionName, Long dataId,
+  public BusTrace(String userId, Long requestId, String traceId, Long sessionId, String sessionName, Long dataId,
       int taskId, String taskName) {
     super();
     this.userId = userId;
@@ -36,11 +36,11 @@ public class BusTrace {
     return this;
   }
 
-  public String getRequestId() {
+  public Long getRequestId() {
     return requestId;
   }
 
-  public BusTrace setRequestId(String requestId) {
+  public BusTrace setRequestId(Long requestId) {
     this.requestId = requestId;
     return this;
   }
@@ -109,5 +109,4 @@ public class BusTrace {
     return this;
   }
 
-  
 }
