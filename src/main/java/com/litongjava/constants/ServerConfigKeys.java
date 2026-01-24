@@ -54,6 +54,7 @@ public interface ServerConfigKeys {
   // app
   String APP_ENV = "app.env";
   String APP_NAME = "app.name";
+  String APP_GROUP_NAME = "app.group.name";
 
   // jdbc
   String DATABASE_DSN = "DATABASE_DSN";
