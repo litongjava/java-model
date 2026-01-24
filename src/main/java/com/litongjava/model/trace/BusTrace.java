@@ -9,6 +9,7 @@ public class BusTrace {
   private Long dataId;
   private int taskId;
   private String taskName;
+  private long startTime;
 
   public BusTrace() {
   }
@@ -99,4 +100,14 @@ public class BusTrace {
     return this;
   }
 
+  public long getStartTime() {
+    return startTime;
+  }
+
+  public BusTrace setStartTime(long startTime) {
+    this.startTime = startTime;
+    return this;
+  }
+
+  
 }
