@@ -8,6 +8,7 @@ public class UploadFile {
   private String name = null;
   private long size = -1;
   private byte[] data = null;
+  private String contentType;
 
   public UploadFile() {
   }
@@ -46,6 +47,14 @@ public class UploadFile {
 
   public void setData(byte[] data) {
     this.data = data;
+  }
+
+  public String getContentType() {
+    return contentType;
+  }
+
+  public void setContentType(String contentType) {
+    this.contentType = contentType;
   }
 
 }
