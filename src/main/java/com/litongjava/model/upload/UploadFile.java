@@ -25,6 +25,14 @@ public class UploadFile {
     this.data = data;
   }
 
+  public UploadFile(String name, long size, byte[] data, String contentType) {
+    super();
+    this.name = name;
+    this.size = size;
+    this.data = data;
+    this.contentType = contentType;
+  }
+
   public String getName() {
     return name;
   }
