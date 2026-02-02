@@ -6,7 +6,11 @@ public interface Context {
 
   public Context run(Class<?>[] primarySources, String[] args);
 
-  public Context run(Class<?>[] primarySources, BootConfiguration tioBootConfiguration, String[] args);
+  public Context run(Class<?>[] primarySources, BootConfiguration bootConfiguration, String[] args);
+
+  public Context run(BootConfiguration bootConfiguration, String[] args);
+
+  public Context run(BootConfiguration bootConfiguration);
 
   public void initAnnotation(List<Class<?>> scannedClasses);
 
@@ -17,6 +21,5 @@ public interface Context {
   public void restart(Class<?>[] primarySources, String[] args);
 
   public int getPort();
-
 
 }
