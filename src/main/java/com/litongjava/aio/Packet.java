@@ -43,6 +43,9 @@ public class Packet implements java.io.Serializable, Cloneable {
    * 零拷贝传输使用的文件通道
    */
   private transient File fileBody;
+  private long fileBodyStart = 0;
+  private long fileBodyLength = -1; // -1 表示到文件末尾
+  private long fileBodyTransferred = 0;
 
   public void setKeepConnection(boolean keepedConnection) {
     this.keepConnection = keepedConnection;
@@ -147,6 +150,37 @@ public class Packet implements java.io.Serializable, Cloneable {
 
   public void setFileBody(File fileBody) {
     this.fileBody = fileBody;
+  }
+
+  public long getFileBodyStart() {
+    return fileBodyStart;
+  }
+
+  public void setFileBodyStart(long fileBodyStart) {
+    this.fileBodyStart = fileBodyStart;
+  }
+
+  public long getFileBodyLength() {
+    return fileBodyLength;
+  }
+
+  public void setFileBodyLength(long fileBodyLength) {
+    this.fileBodyLength = fileBodyLength;
+  }
+
+  public long getFileBodyTransferred() {
+    return fileBodyTransferred;
+  }
+
+  public void setFileBodyTransferred(long fileBodyTransferred) {
+    this.fileBodyTransferred = fileBodyTransferred;
+  }
+
+  public void setFileBody(File fileBody, long start, long length) {
+    this.fileBody = fileBody;
+    this.fileBodyStart = start;
+    this.fileBodyLength = length;
+    this.fileBodyTransferred = 0;
   }
 
 }
