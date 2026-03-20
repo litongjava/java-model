@@ -108,7 +108,7 @@ public class RespBodyVo implements java.io.Serializable {
   }
 
   public boolean isOk() {
-    return this.code == RespCode.OK.value;
+    return this.code == RespCode.OK.value || this.code == 200;
   }
 
   public RespBodyVo msg(String msg) {
