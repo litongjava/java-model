@@ -1,12 +1,10 @@
 package com.litongjava.model.upload;
 
 public class UploadResult {
-  private Long id;
-  private Long size;
-  private String name, targetName, url, md5, etag;
-  private String content;
-  private String etag2;
-  private String url2;
+  private Long id, size;
+  private String name, targetName, url, md5, etag, content;
+  private Long id2, size2;
+  private String name2, targetName2, url2, md52, etag2, content2;
 
   public UploadResult(long id, String filename, Long size, String url, String md5) {
     this.id = id;
@@ -143,5 +141,53 @@ public class UploadResult {
   public UploadResult setUrl2(String url2) {
     this.url2 = url2;
     return this;
+  }
+
+  public Long getId2() {
+    return id2;
+  }
+
+  public void setId2(Long id2) {
+    this.id2 = id2;
+  }
+
+  public Long getSize2() {
+    return size2;
+  }
+
+  public void setSize2(Long size2) {
+    this.size2 = size2;
+  }
+
+  public String getName2() {
+    return name2;
+  }
+
+  public void setName2(String name2) {
+    this.name2 = name2;
+  }
+
+  public String getTargetName2() {
+    return targetName2;
+  }
+
+  public void setTargetName2(String targetName2) {
+    this.targetName2 = targetName2;
+  }
+
+  public String getMd52() {
+    return md52;
+  }
+
+  public void setMd52(String md52) {
+    this.md52 = md52;
+  }
+
+  public String getContent2() {
+    return content2;
+  }
+
+  public void setContent2(String content2) {
+    this.content2 = content2;
   }
 }
