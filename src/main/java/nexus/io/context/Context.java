@@ -1,0 +1,25 @@
+package nexus.io.context;
+
+import java.util.List;
+
+public interface Context {
+
+  public Context run(Class<?>[] primarySources, String[] args);
+
+  public Context run(Class<?>[] primarySources, BootConfiguration bootConfiguration, String[] args);
+
+  public Context run(BootConfiguration bootConfiguration, String[] args);
+
+  public Context run(BootConfiguration bootConfiguration);
+
+  public void initAnnotation(List<Class<?>> scannedClasses);
+
+  public boolean isRunning();
+
+  public void close();
+
+  public void restart(Class<?>[] primarySources, String[] args);
+
+  public int getPort();
+
+}
