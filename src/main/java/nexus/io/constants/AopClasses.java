@@ -1,6 +1,6 @@
 package nexus.io.constants;
 
 public interface AopClasses {
-  String AOP = "com.litongjava.jfinal.aop.Aop";
+  String AOP = "nexus.io.jfinal.aop.Aop";
   String LoadingCache = "com.github.benmanes.caffeine.cache.LoadingCache";
 }
