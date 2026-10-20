@@ -39,7 +39,9 @@ public interface ServerConfigKeys {
   String SERVER_RESOURCES_STATIC_FILE_CACHE_ENABLE = "server.resources.static.file.cache.enable";
 
   // unit millis
-  String SERVER_HEARTBEAT_TIMEOUT = "server.beartbeat.timeout";
+  String SERVER_HEARTBEAT_TIMEOUT = "server.heartbeat.timeout";
+  // legacy misspelled key, still honored as a fallback
+  String SERVER_BEARTBEAT_TIMEOUT = "server.beartbeat.timeout";
   String SERVER_READ_BUFFER_SIZE = "server.read.buffer.size";
 
   // http
